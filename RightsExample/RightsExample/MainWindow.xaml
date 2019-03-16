@@ -1,0 +1,18 @@
+﻿<Window x:Class="RightsExample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RightsExample"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </Window.Resources>
+    <StackPanel>
+        <TextBlock Text="Visible for user with read right" Background="Aquamarine" Visibility="{Binding UserHasReadRight, Converter={StaticResource BoolToVis}}"/>
+        <TextBlock Text="Visible for user with write right" Background="CadetBlue" Visibility="{Binding UserHasWriteRight, Converter={StaticResource BoolToVis}}"/>
+        <Button Content="Login as Admin" Command="{Binding LoginAsAdminCommand}"/>
+        <Button Content="Login as User" Command="{Binding LoginAsUserCommand}"/>
+    </StackPanel>
+</Window>
